@@ -48,28 +48,29 @@ namespace DSA2
             }
             return smallest;
         }
-
         static int[] FindDuplicates(int[] arr)
         {
-            List<int> list = new List<int>();
+            Dictionary<int, bool> dict = new Dictionary<int, bool>();
             for (int i = 0; i < arr.Length; i++)
             {
                 for (int j = i + 1; j < arr.Length; j++)
                 {
-                    if (!list.Contains(arr[i]))
+                    if (!dict.ContainsKey(arr[i]))
                     {
                         if (arr[i] == arr[j])
                         {
-                            list.Add(arr[i]);
+                            dict.Add(arr[i], true);
                             break;
                         }
                     }
                 }
             }
-            int[] answer = new int[list.Count];
-            for(int i = 0; i < answer.Length; i++)
+            int[] answer = new int[dict.Count];
+            int count = 0;
+            foreach(var pair in dict)
             {
-                answer[i] = list[i];
+                answer[count] = pair.Key;
+                count++;
             }
             return answer;
         }
