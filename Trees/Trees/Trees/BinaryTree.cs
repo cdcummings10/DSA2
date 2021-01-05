@@ -25,22 +25,19 @@ namespace Trees
         {
             if (newNode.Value >= node.Value && node.Right != null)
             {
-                node = node.Right;
-                Add(node, newNode);
+                Add(node.Right, newNode);
             }
             else if (newNode.Value <= node.Value && node.Left != null)
             {
-                node = node.Left;
-                Add(node, newNode);
+                Add(node.Left, newNode);
             }
             else
             {
                 if (newNode.Value >= node.Value)
                 {
                     node.Right = newNode;
-
                 }
-                else if (newNode.Value <= node.Value)
+                else
                 {
                     node.Left = newNode;
                 }
@@ -65,11 +62,11 @@ namespace Trees
             }
             else if (value > node.Value && node.Right != null)
             {
-                Contains(node.Right, value);
+                return Contains(node.Right, value);
             }
             else if (value < node.Value && node.Left != null)
             {
-                Contains(node.Right, value);
+                return Contains(node.Left, value);
             }
             return false;
         }
