@@ -23,6 +23,57 @@ namespace Trees
             BTree.Add(200);
 
             Console.WriteLine(BTree.Contains(7));
+            InOrder(BTree);
+        }
+        public static void InOrder(BinaryTree tree)
+        {
+            InOrder(tree.Root);
+        }
+        private static void InOrder(Node<int> node)
+        {
+            if (node.Left != null)
+            {
+                InOrder(node.Left);
+            }
+            Console.WriteLine(node.Value);
+            if (node.Right != null)
+            {
+                InOrder(node.Right);
+            }
+        }
+
+        public static void PreOrder(BinaryTree tree)
+        {
+            PreOrder(tree.Root);
+        }
+        private static void PreOrder(Node<int> node)
+        {
+            Console.WriteLine(node.Value);
+            if (node.Left != null)
+            {
+                PreOrder(node.Left);
+            }
+            if (node.Right != null)
+            {
+                PreOrder(node.Right);
+            }
+        }
+
+        public static void PostOrder(BinaryTree tree)
+        {
+            PostOrder(tree.Root);
+        }
+        private static void PostOrder(Node<int> node)
+        {
+            if (node.Left != null)
+            {
+                PostOrder(node.Left);
+            }
+            if (node.Right != null)
+            {
+                PostOrder(node.Right);
+            }
+            Console.WriteLine(node.Value);
         }
     }
 }
