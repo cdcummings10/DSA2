@@ -25,6 +25,7 @@ namespace Trees
             Console.WriteLine(BTree.Contains(7));
             InOrder(BTree);
         }
+
         public static void InOrder(BinaryTree tree)
         {
             InOrder(tree.Root);
