@@ -13,14 +13,21 @@ namespace DSA2
             int largest = FindLargest(array1);
             int smallest = FindSmallest(array1);
             int[] duplicates = FindDuplicates(array1);
+            int[] shuffle = Shuffle(array1);
             string duplicateString = "";
-            Console.WriteLine("The largest integer in { 5, 3, 6, 8, 9, 10, 3, 7 } is " + largest);
-            Console.WriteLine("The smallest integer in { 5, 3, 6, 8, 9, 10, 3, 7 } is " + smallest);
+            Console.WriteLine("The largest integer in { 5, 3, 6, 8, 9, 3, 6, 11, 9, 10, 3, 7 } is " + largest);
+            Console.WriteLine("The smallest integer in { 5, 3, 6, 8, 9, 3, 6, 11, 9, 10, 3, 7 } is " + smallest);
             for(int i = 0; i < duplicates.Length; i++)
             {
                 duplicateString += " " + duplicates[i] + ",";  
             }
-            Console.WriteLine("The duplicates in { 5, 3, 6, 8, 9, 10, 3, 7 } are" + duplicateString);
+            Console.WriteLine("The duplicates in { 5, 3, 6, 8, 9, 3, 6, 11, 9, 10, 3, 7 } are" + duplicateString);
+            string shuffleString = "";
+            for (int i = 0; i < shuffle.Length; i++)
+            {
+                shuffleString += " " + shuffle[i] + ",";
+            }
+            Console.WriteLine("The array in { 5, 3, 6, 8, 9, 3, 6, 11, 9, 10, 3, 7 } shuffled is" + shuffleString);
 
         }
         static int FindLargest(int[] arr)
@@ -71,6 +78,23 @@ namespace DSA2
             {
                 answer[count] = pair.Key;
                 count++;
+            }
+            return answer;
+        }
+        static int[] Shuffle(int[] arr)
+        {
+            Dictionary<int, bool> dict = new Dictionary<int, bool>();
+            int[] answer = new int[arr.Length];
+            Random rand = new Random();
+            for(int i = 0; i < arr.Length; i++)
+            {
+                int randomNumber = rand.Next(arr.Length);
+                while (dict.ContainsKey(randomNumber))
+                {
+                    randomNumber = rand.Next(arr.Length);
+                }
+                answer[randomNumber] = arr[i];
+                dict.Add(randomNumber, true);
             }
             return answer;
         }
