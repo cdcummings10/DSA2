@@ -11,6 +11,7 @@ namespace StringManipulation
             Console.WriteLine(ReverseString(helloWorld));
             Console.WriteLine(IsPalindrome(helloWorld));
             Console.WriteLine(IsPalindrome("racecar"));
+            // test github commit
         }
         static string ReverseString(string input)
         {
